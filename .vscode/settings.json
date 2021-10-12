@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "XadrezProject",
+        "ShirtProject",
+        "EstadioProject",
+        "CarroProject",
+        "ContaProject"
+    ]
+}
