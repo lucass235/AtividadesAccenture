@@ -1,4 +1,4 @@
-public class Cliente {
+public class Cliente{
 
     private String nome;
     private String cpf;
@@ -38,12 +38,39 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public string getSobreNome() {
+    public String getSobreNome() {
         return sobreNome;
     }
 
-    public void setSobreNome(string sobreNome) {
+    public void setSobreNome(String sobreNome) {
         this.sobreNome = sobreNome;
+    }
+
+    public void depositar(double valor) {
+        conta.depositar(valor);
+    }
+
+    public void sacar(double valor) {
+        conta.sacar(valor);
+    }
+
+    public void trasferir(Cliente c, double valor) {
+        conta.trasferir(c.conta, valor);
+    }
+
+    public void exibirSaldo() {
+        System.out.println("Saldo: R$"+conta.getSaldo());
+        
+    }
+
+    public void exibirExtrato() {
+        conta.exibirExtrato();
+        
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente [cpf = " + cpf + ", nome = " + nome + ", numero = " + numero + ", sobreNome = " + sobreNome + "]";
     }
 
 }

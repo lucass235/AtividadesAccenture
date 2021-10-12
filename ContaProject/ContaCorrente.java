@@ -36,7 +36,7 @@ public class ContaCorrente {
 
     public void depositar(double valor) {
         setSaldo(valor);
-        extrato += "Deposito de R$" + valor / n;
+        extrato += "Deposito de R$" + valor+"\n";
         System.out.println("Valor depositado!");
 
     }
@@ -46,7 +46,7 @@ public class ContaCorrente {
             System.out.println("Saldo insuficiente!");
         } else {
             setSaldo(getSaldo() - valor);
-            extrato += "Saque no valor de R$" + valor / n;
+            extrato += "Saque no valor de R$" + valor+"\n";
         }
     }
 
@@ -55,12 +55,12 @@ public class ContaCorrente {
     }
 
     public void trasferir(ContaCorrente conta, double valor) {
-        if(valor > getSaldo(){
+        if(valor > getSaldo()) {
             System.out.println("Saldo insuficiente!");
         } else {
             setSaldo(getSaldo() - valor);
-            conta.setSaldo(valor);
-            extrato += "Trasferencia feita de R$"+valor/n;
+            conta.setSaldo(conta.getSaldo()+ valor);;
+            extrato += "Trasferencia feita de R$"+valor+"\n";
             System.out.println("Valor trasferido");
         }
     }
