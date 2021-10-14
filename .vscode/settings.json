@@ -1,10 +1,12 @@
 {
     "java.project.sourcePaths": [
+        "pesoProject",
         "XadrezProject",
         "ShirtProject",
+        "RetanguloProject",
         "EstadioProject",
         "ContaProject",
         "CarroProject",
-        "pesoProject"
+        "CirculoProject"
     ]
 }

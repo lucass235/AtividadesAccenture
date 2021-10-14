@@ -8,7 +8,7 @@ public class Peso {
         nome =  JOptionPane.showInputDialog("Digite seu Nome:");
         idadeInput = JOptionPane.showInputDialog("Digite sua idade:");
         idade = Integer.parseInt(idadeInput);
-        while(idade <= 0){
+        while(idade <= 0) {
         idadeInput = JOptionPane.showInputDialog("Idade inválida, digite novamente:");
         idade = Integer.parseInt(idadeInput);
         }
