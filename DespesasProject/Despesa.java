@@ -1,21 +1,21 @@
-public class Despesa {
+public class Despesa  {
     private String cpf;
-    private float[] despesas;
+    private float[] vDespesaMes;
 
-    public Despesa(String cpf, float[] despesas) {
+    public Despesa(String cpf, float[] vDespesaTotal) {
         this.cpf = cpf;
-        this.despesas = despesas;
+        this.vDespesaMes = vDespesaTotal;
     }
 
     public String getCpf() {
         return cpf;
     }
 
-    public DespesaMes (int mes) {
+    public DespesaMes DespesaDoMes (int mes) {
         float totalDespesas = 0;
         DespesaMes despesaIndividuo;
-        for (int i = 0;i < despesas.length;i++) {
-            totalDespesas += despesas[i];
+        for (int i = 0;i < vDespesaMes.length;i++) {
+            totalDespesas += vDespesaMes[i];
         }
         despesaIndividuo = new DespesaMes(mes, totalDespesas);
         return despesaIndividuo;

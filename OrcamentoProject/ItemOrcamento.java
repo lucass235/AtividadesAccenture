@@ -7,6 +7,14 @@ public class ItemOrcamento {
         this.valor = valor;
     }
 
+    public void setHistorico(String historico) {
+        this.historico = historico;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
     public String getHistorico() {
         return historico;
     }
