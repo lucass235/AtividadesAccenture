@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class OrcamentoPrincipal {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -7,77 +9,92 @@ public class OrcamentoPrincipal {
         ItemOrcamentoComplexo item = new ItemOrcamentoComplexo("", 0, null, 0);
         ItemOrcamento resul;
         int pos = 0, op;
-        String historico;
+        String historico, menu, entrada;
         float valor;
-
+        menu = menu();
         do {
-            menu();
-            op = in.nextInt();
-            in.nextLine();
+            entrada = JOptionPane.showInputDialog(null, menu, "Menu", JOptionPane.INFORMATION_MESSAGE);
+            op = Integer.parseInt(entrada);
             switch (op) {
-                case 1:
-                    if (pos == vItem.length) {
-                        System.err.println("Vetor cheio");
-                    } else {
-                        System.out.print("Digite o historico do item: ");
-                        historico = in.nextLine();
+            case 1:
+                if (pos == vItem.length) {
+                    JOptionPane.showMessageDialog(null, "Vetor Cheio!", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    entrada = JOptionPane.showInputDialog(null, "Digite o histórico do item", "Histórico",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    historico = entrada;
+                    resul = item.encontraItem(historico);
+                    while (resul != null) {
+                        entrada = JOptionPane.showInputDialog(null,
+                                "Ja existe um item com esse histórico, digite um diferente", "Erro",
+                                JOptionPane.ERROR_MESSAGE);
+                        historico = entrada;
                         resul = item.encontraItem(historico);
-                        while (resul != null) {
-                            System.err.print("Ja existem um item com esse historico, digite um diferente: ");
-                            historico = in.nextLine();
-                            resul = item.encontraItem(historico);
-                        }
-                        System.out.print("Digite o valor do item: ");
-                        valor = in.nextFloat();
-                        while (valor <= 0) {
-                            System.err.print("valor invalido, digite um valor maior que 0: ");
-                            valor = in.nextFloat();
-                        }
-                        vItem[pos] = new ItemOrcamento(historico, valor);
-                        pos++;
-                        item.setHistorico(historico);
-                        item.setValor(valor);
-                        item.setVetorItem(vItem);
-                        item.setPos(pos);
-                        System.out.println("Intem registrado com sucesso!");
                     }
-                    break;
-                case 2:
-                    if (item.getVetorItem() == null) {
-                        System.err.println("Nao existe item registrados!");
-                    } else {
-                        System.out.print("Digite o historico do item: ");
-                        historico = in.nextLine();
-                        resul = item.encontraItem(historico);
+                    entrada = JOptionPane.showInputDialog(null, "Digite o valor do item", "Valor Item",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    valor = Integer.parseInt(entrada);
+                    while (valor <= 0) {
+                        entrada = JOptionPane.showInputDialog(null, "Valor inválido, digite um valor maior que 0",
+                                "Erro", JOptionPane.ERROR_MESSAGE);
+                        valor = Integer.parseInt(entrada);
+                    }
+                    vItem[pos] = new ItemOrcamento(historico, valor);
+                    pos++;
+                    item.setHistorico(historico);
+                    item.setValor(valor);
+                    item.setVetorItem(vItem);
+                    item.setPos(pos);
+                    System.out.println("Intem registrado com sucesso!");
+                }
+                break;
+            case 2:
+                if (item.getVetorItem() == null) {
+                    JOptionPane.showMessageDialog(null, "Não exite itens registrados!", "Erro",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
+                    entrada = JOptionPane.showInputDialog(null, "Digite o histórico do item", "Histórico",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    historico = entrada;
+                    resul = item.encontraItem(historico);
 
-                        if (resul != null) {
-                            System.out.println("Item encontrado!");
-                        } else {
-                            System.err.println("Item não encontrado!");
-                        }
-                    }
-                    break;
-                case 3:
-                    if (item.getVetorItem() == null) {
-                        System.err.println("Nao existe item registrados!");
+                    if (resul != null) {
+                        String historicoItem = resul.getHistorico();
+                        float valorItem = resul.getValor();
+                        String msg = "Histórico: " + historicoItem + "\nValor: " + valorItem;
+                        JOptionPane.showMessageDialog(null, "Item encontrado!\n" + msg, "Achou",
+                                JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        System.out.println("Total do orçamento R$" + item.getValor());
+                        JOptionPane.showMessageDialog(null, "Item não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
-                    break;
-                case 0:
-                    System.out.println("Obrigado por usar nosso programa!");
-                    System.out.println("By Lucas dos Santos");
-                    break;
-                default:
-                    System.err.println("Opcao invalida, digite 1, 2, 3 ou 0 para encerrar!");
+                }
+                break;
+            case 3:
+                if (item.getVetorItem() == null) {
+                    JOptionPane.showMessageDialog(null, "Não exite itens registrados!", "Erro",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Total do orçamento R$" + item.getValor(), "Total Valor",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                break;
+            case 0:
+                JOptionPane.showMessageDialog(null, "Obrigado por usar nosso programa!\nBy Lucas dos Santos",
+                        "Programa Encerrado", JOptionPane.INFORMATION_MESSAGE);
+
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opção inválida, digite 1, 2, 3 ou 0 para encerrar!", "Erro",
+                        JOptionPane.ERROR_MESSAGE);
+                System.err.println("Opcao invalida, digite 1, 2, 3 ou 0 para encerrar!");
             }
 
         } while (op != 0);
     }
 
-    public static void menu() {
-        System.out.println("====================================================");
-        System.out.println("1 - Adicionar item\n2 - buscar item\n3 - Valor de todos os items\n0 - Encerrar");
-        System.out.print("====================================================\n->");
+    public static String menu() {
+        String menu;
+        menu = "1 - Adicionar item\n2 - Buscar item\n3 - Valor de todos os items\n0 - Encerrar";
+        return menu;
     }
 }
