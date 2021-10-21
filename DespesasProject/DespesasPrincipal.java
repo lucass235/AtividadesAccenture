@@ -3,11 +3,14 @@ import java.util.Scanner;
 public class DespesasPrincipal {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        Despesa despesa;
-        int op, dia, mes;
+        Despesa despesa = null;
+        DespesaDia despesaDia = null;
+        DespesaMes despesaMes;
+        int op, mes, dia, pos = 0;
         String cpf;
         boolean cpfValido;
-        float[] despesaDia = new float[28];
+        float valor;
+        float[] vDespesaDia = new float[100];
         System.out.print("Digite seu cpf: ");
         cpf = in.nextLine();
         cpfValido = validacaoCpf(cpf);
@@ -19,24 +22,41 @@ public class DespesasPrincipal {
                 op = in.nextInt();
                 switch (op) {
                 case 1:
-                    System.out.print("Digite o dia: ");
-                    dia = in.nextInt();
                     System.out.print("Digite o mes: ");
                     mes = in.nextInt();
-                    despesa = new Despesa(cpf, despesaDia);
+                    System.out.print("Digite o dia: ");
+                    dia = in.nextInt();
+                    System.out.println("Digite o valor ");
+                    valor = in.nextFloat();
+                    despesaDia = new DespesaDia(dia, mes, valor);
+                    vDespesaDia[pos] = despesaDia.getValor();
+                    pos++;
                     break;
                 case 2:
-
+                    System.out.print("Digite o mes: ");
+                    mes = in.nextInt();
+                    despesaMes = despesa.DespesaDoMes(mes);
+                    System.out.println("Total mes: " + despesaMes.getValor());
                     break;
                 case 3:
+                    if (despesaDia == null) {
+                        System.out.println("Nada foi cadastrado");
+                    } else {
+                        if (despesa == null) {
+                            despesa = new Despesa(cpf, vDespesaDia, pos);
+                            System.out.println("Despesas finalizadas");
+                        } else {
+                            System.out.println("Despesas ja finalizadas");
+                        }
 
+                    }
                     break;
                 case 0:
                     System.out.println("Obrigado por usar nosso programa!");
                     System.out.println("By Lucas dos Santos");
                     break;
                 default:
-                    System.err.println("Opcao invalida, digite 1, 2 ou 0 para encerrar!");
+                    System.err.println("Opcao invalida, digite 1, 2, 3 ou 0 para encerrar!");
                 }
 
             } while (op != 0);
@@ -67,7 +87,7 @@ public class DespesasPrincipal {
     }
 
     public static void menu() {
-        System.out.println(" 1 - Calcular despesas\n 2 - Vereficar despesas\n 0 - Encerrar");
+        System.out.println(" 1 - Calcular despesas\n 2 - Vereficar despesas\n3 - Encerrar despesa\n 0 - Encerrar");
     }
 
 }
