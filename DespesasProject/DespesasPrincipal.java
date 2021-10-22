@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class DespesasPrincipal {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -7,71 +9,83 @@ public class DespesasPrincipal {
         DespesaDia despesaDia = null;
         DespesaMes despesaMes;
         int op, mes, dia, pos = 0;
-        String cpf;
+        String cpf, entrada;
         boolean cpfValido, diaValido;
         float valor;
         DespesaDia[] vDespesaDia = new DespesaDia[100];
-        System.out.print("Digite seu cpf: ");
-        cpf = in.nextLine();
+        entrada = JOptionPane.showInputDialog(null, "Digite seu cpf:", "CPF", JOptionPane.INFORMATION_MESSAGE);
+        cpf = entrada;
         cpfValido = validacaoCpf(cpf);
         while (!cpfValido) {
-            System.out.println("CPF inválido, digite novamente: ");
-            cpf = in.nextLine();
+            entrada = JOptionPane.showInputDialog(null, "CPF invalido,Digite novamente:", "CPF",
+                    JOptionPane.INFORMATION_MESSAGE);
+            cpf = entrada;
             cpfValido = validacaoCpf(cpf);
         }
         despesa.setCpf(cpf);
         do {
-            menu();
-            op = in.nextInt();
+            entrada = JOptionPane.showInputDialog(null, "1 - Adicionar despesas\n2 - Vereficar despesas\n0 - Encerrar",
+                    "MENU", JOptionPane.INFORMATION_MESSAGE);
+            op = Integer.parseInt(entrada);
+
             switch (op) {
             case 1:
-                System.out.print("Digite o mês: ");
-                mes = in.nextInt();
+                entrada = JOptionPane.showInputDialog(null, "Digite o mes:", "Mes", JOptionPane.INFORMATION_MESSAGE);
+                mes = Integer.parseInt(entrada);
                 while (mes <= 0 || mes > 12) {
-                    System.out.print("Mes inválido, digite novamente: ");
-                    mes = in.nextInt();
+                    entrada = JOptionPane.showInputDialog(null, "Mes invalido, Digite novamente:", "Mes",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    mes = Integer.parseInt(entrada);
                 }
-                System.out.print("Digite o dia: ");
-                dia = in.nextInt();
+                entrada = JOptionPane.showInputDialog(null, "Digite o dia:", "Dia", JOptionPane.INFORMATION_MESSAGE);
+                dia = Integer.parseInt(entrada);
                 diaValido = verificaDia(mes, dia);
                 while (!diaValido) {
-                    System.out.print("Dia inválido, digite novamente: ");
-                    dia = in.nextInt();
+                    entrada = JOptionPane.showInputDialog(null, "Dia invalido, Digite novamente:", "Dia",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    dia = Integer.parseInt(entrada);
                     diaValido = verificaDia(mes, dia);
                 }
-                System.out.println("Digite o valor: ");
-                valor = in.nextFloat();
+                entrada = JOptionPane.showInputDialog(null, "Digite o valor:", "Valor",
+                        JOptionPane.INFORMATION_MESSAGE);
+                valor = Float.parseFloat(entrada);
                 while (valor <= 0) {
-                    System.out.println("Valor inválido, digite novamente: ");
-                    valor = in.nextFloat();
+                    entrada = JOptionPane.showInputDialog(null, "Valor invalido, Digite novamente:", "Valor",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    valor = Float.parseFloat(entrada);
                 }
                 despesaDia = new DespesaDia(dia, mes, valor);
                 vDespesaDia[pos] = despesaDia;
                 pos++;
                 despesa.setvDespesas(vDespesaDia);
                 despesa.setPos(pos);
-                System.out.println("Despesa adicionada!");
+                JOptionPane.showMessageDialog(null, "Despesa adicionada!", "Despesa Cadastrada",
+                        JOptionPane.INFORMATION_MESSAGE);
                 break;
             case 2:
                 if (despesaDia == null) {
-                    System.out.println("Nada foi Cadastrado");
+                    JOptionPane.showMessageDialog(null, "Nada foi Casdastrado", "Erro", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    System.out.print("Digite o mês: ");
-                    mes = in.nextInt();
+                    entrada = JOptionPane.showInputDialog(null, "Digite o mes:", "Mes",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    mes = Integer.parseInt(entrada);
                     despesaMes = despesa.DespesaDoMes(mes);
                     if (despesaMes != null) {
-                        System.out.println("Total mês: " + despesaMes.getValor());
+                        JOptionPane.showMessageDialog(null, "Total mês: " + despesaMes.getValor(), "Total Despesas",
+                                JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        System.out.println("Não existe despesa nesse mês!");
+                        JOptionPane.showMessageDialog(null, "Não existe despesas nesse mês!", "Erro",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 break;
             case 0:
-                System.out.println("Obrigado por usar nosso programa!");
-                System.out.println("By Lucas dos Santos");
+                JOptionPane.showMessageDialog(null, "Obrigado por usar nosso programa!\nBy Lucas dos Santos",
+                        "Total Despesas", JOptionPane.INFORMATION_MESSAGE);
                 break;
             default:
-                System.err.println("Opção inválida, digite 1, 2, 3 ou 0 para encerrar!");
+                JOptionPane.showMessageDialog(null, "Opção inválida, digite 1, 2 ou 0 para encerrar!", "Erro",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
         } while (op != 0);
@@ -98,10 +112,6 @@ public class DespesasPrincipal {
             }
         }
         return veri; // cpf valido!
-    }
-
-    public static void menu() {
-        System.out.println("1 - Adicionar despesas\n2 - Vereficar despesas\n0 - Encerrar");
     }
 
     public static boolean verificaDia(int mes, int dia) {
