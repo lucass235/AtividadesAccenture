@@ -1,28 +1,39 @@
 public class Despesa {
     private String cpf;
-    private float[] vDespesas;
+    private DespesaDia[] vDespesas;
     private int pos;
 
-    public Despesa(String cpf, float[] vDespesas, int pos) {
+    public Despesa(String cpf, DespesaDia[] vDespesas, int pos) {
         this.cpf = cpf;
         this.vDespesas = vDespesas;
         this.pos = pos;
     }
 
-    public String getCpf() {
-        return cpf;
+    public void setvDespesas(DespesaDia[] vDespesas) {
+        this.vDespesas = vDespesas;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
     }
 
     public DespesaMes DespesaDoMes(int mes) {
         float totalDespesas = 0;
         DespesaMes despesaIndividuo;
         for (int i = 0; i < this.pos; i++) {
-            if (mes == vDespesas[i].ge) {
-                
+            if (vDespesas[i].getMes() == mes) {
+                totalDespesas += this.vDespesas[i].getValor();
             }
-            totalDespesas += this.vDespesas[i];
         }
-        despesaIndividuo = new DespesaMes(mes, totalDespesas);
-        return despesaIndividuo;
+        if (totalDespesas == 0) {
+            return null;
+        } else {
+            despesaIndividuo = new DespesaMes(mes, totalDespesas);
+            return despesaIndividuo;
+        }
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }
