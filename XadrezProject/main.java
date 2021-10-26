@@ -3,29 +3,49 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int linha, coluna, op;
+        int linhaOrigem, colunaOrigem, op, linhaDestino, colunaDestino, jogada;
         String[][] tabuleiro = { { "R", "N", "B", "Q", "K", "B", "N", "R" }, { "P", "P", "P", "P", "P", "P", "P", "P" },
                 { " ", " ", " ", " ", " ", " ", " ", " " }, { " ", " ", " ", " ", " ", " ", " ", " " },
                 { " ", " ", " ", " ", " ", " ", " ", " " }, { " ", " ", " ", " ", " ", " ", " ", " " },
                 { "p", "p", "p", "p", "p", "p", "p", "p" }, { "r", "n", "b", "q", "k", "b", "n", "r" } };
-
+        jogada = 0; // jogada das brancas
         do {
             imprimirTabuleiro(tabuleiro);
+
             System.out.print("Infome a posicao da linha do tabuleiro: ");
-            linha = in.nextInt();
-            while (linha == 0 || linha > 8) {
+            linhaOrigem = in.nextInt();
+            while (linhaOrigem < 1 || linhaOrigem > 8) { // validacao
                 System.out.print("Opcao invalida. Digite um numero entre 1 e 8 ");
-                linha = in.nextInt();
+                linhaOrigem = in.nextInt();
             }
-            linha -= 1; // ajustar posicao da matriz
+            linhaOrigem -= 1; // ajustar posicao da matriz
+
             System.out.print("Infome a posicao da coluna do tabuleiro: ");
-            coluna = in.nextInt();
-            while (coluna == 0 || coluna > 8) {
+            colunaOrigem = in.nextInt();
+            while (colunaOrigem < 1 || colunaOrigem > 8) { // validacao
                 System.out.print("Opcao invalida. Digite um numero entre 1 e 8 ");
-                coluna = in.nextInt();
+                colunaOrigem = in.nextInt();
             }
-            coluna -= 1; // ajustar posicao da matriz
-            jogar(tabuleiro, linha, coluna);
+            colunaOrigem -= 1; // ajustar posicao da matriz
+            if (jogada == 0) {
+                if (tabuleiro[linhaOrigem][colunaOrigem] != "p") {
+                    System.out.println("Opa posicao incorreta");
+                } else {
+
+                }
+
+            } else {
+
+            }
+
+            System.out.print("Infome a posicao da coluna do tabuleiro: ");
+            colunaOrigem = in.nextInt();
+            while (colunaOrigem == 0 || colunaOrigem > 8) {
+                System.out.print("Opcao invalida. Digite um numero entre 1 e 8 ");
+                colunaOrigem = in.nextInt();
+            }
+            colunaOrigem -= 1; // ajustar posicao da matriz
+            jogar(tabuleiro, linhaOrigem, colunaOrigem);
             System.out.println(" Quer continuar o jogo? 1 - SIM 0 - NAO");
             op = in.nextInt();
         } while (op != 0);
