@@ -169,7 +169,8 @@ public class main {
             }
         } while (op != 0);
 
-        imprimirTabuleiro(tabuleiro);
+        JOptionPane.showMessageDialog(null, "Obrigado por usar nosso programa!\nBy Lucas dos Santos",
+                "Programa Encerrado", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static String imprimirTabuleiro(String[][] t) {
