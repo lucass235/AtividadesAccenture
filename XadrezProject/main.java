@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 public class main {
 
     public static void main(String[] args) {
-
+        Peao peao = new Peao();
         String entrada;
         int linhaOrigem, colunaOrigem, op, linhaDestino, colunaDestino, jogada;
         String[][] tabuleiro = { { "R", "N", "B", "Q", "K", "B", "N", "R" }, { "P", "P", "P", "P", "P", "P", "P", "P" },
@@ -18,7 +18,7 @@ public class main {
             linhaOrigem = Integer.parseInt(entrada);
             while (linhaOrigem < 1 || linhaOrigem > 8) { // validacao
                 entrada = JOptionPane.showInputDialog(null,
-                        imprimirTabuleiro(tabuleiro) + "\nOpção invalida. Digite um numero entre 1 e 8: ", "ERRO",
+                        imprimirTabuleiro(tabuleiro) + "\nOpção inválida. Digite um numero entre 1 e 8: ", "ERRO",
                         JOptionPane.ERROR_MESSAGE);
                 linhaOrigem = Integer.parseInt(entrada);
             }
@@ -69,8 +69,7 @@ public class main {
                         if (linhaDestino == 6) {
                             if (linhaDestino == 5
                                     || linhaDestino == 4 && tabuleiro[linhaDestino][colunaDestino] == " ") {
-
-                                tabuleiro[linhaDestino][colunaDestino] = tabuleiro[linhaOrigem][colunaOrigem];
+                                tabuleiro = peao.mover(tabuleiro, "p", linhaDestino, colunaDestino);
                                 tabuleiro[linhaOrigem][colunaOrigem] = " ";
                                 jogada = 1;
                                 JOptionPane.showMessageDialog(null, "Peça movida", "SUCESSO",
@@ -81,7 +80,7 @@ public class main {
                             }
                         } else {
                             if (linhaOrigem - 1 == linhaDestino && tabuleiro[linhaDestino][colunaDestino] == " ") {
-                                tabuleiro[linhaDestino][colunaDestino] = tabuleiro[linhaOrigem][colunaOrigem];
+                                tabuleiro = peao.mover(tabuleiro, "p", linhaDestino, colunaDestino);
                                 tabuleiro[linhaOrigem][colunaOrigem] = " ";
                                 jogada = 1;
                                 JOptionPane.showMessageDialog(null, "Peça movida", "SUCESSO",
@@ -132,7 +131,7 @@ public class main {
                         if (linhaDestino == 1) {
                             if (linhaDestino == 2
                                     || linhaDestino == 3 && tabuleiro[linhaDestino][colunaDestino] == " ") {
-                                tabuleiro[linhaDestino][colunaDestino] = tabuleiro[linhaOrigem][colunaOrigem];
+                                tabuleiro = peao.mover(tabuleiro, "p", linhaDestino, colunaDestino);
                                 tabuleiro[linhaOrigem][colunaOrigem] = " ";
                                 jogada = 0;
                                 JOptionPane.showMessageDialog(null, "Peça movida", "SUCESSO",
@@ -143,7 +142,7 @@ public class main {
                             }
                         } else {
                             if (linhaOrigem + 1 == linhaDestino && tabuleiro[linhaDestino][colunaDestino] == " ") {
-                                tabuleiro[linhaDestino][colunaDestino] = tabuleiro[linhaOrigem][colunaOrigem];
+                                tabuleiro = peao.mover(tabuleiro, "p", linhaDestino, colunaDestino);
                                 tabuleiro[linhaOrigem][colunaOrigem] = " ";
                                 jogada = 0;
                                 JOptionPane.showMessageDialog(null, "Peça movida", "SUCESSO",
@@ -164,7 +163,7 @@ public class main {
                     JOptionPane.QUESTION_MESSAGE);
             op = Integer.parseInt(entrada);
             while (op != 0 && op != 1) {
-                entrada = JOptionPane.showInputDialog(null, "Opção inválida. Digite um numero 0 ou 1: ", "ERRO",
+                entrada = JOptionPane.showInputDialog(null, "Opção inválida. Digite um número 0 ou 1: ", "ERRO",
                         JOptionPane.ERROR_MESSAGE);
                 op = Integer.parseInt(entrada);
             }
