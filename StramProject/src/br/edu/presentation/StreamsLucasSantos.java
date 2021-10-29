@@ -96,7 +96,7 @@ public class StreamsLucasSantos {
 		 */
 		imprimirClientesComPoupanca();
 
-		System.out.println();
+		System.out.println("====================================");
 
 		// * 6.
 		// * @return Retorna uma lista de Strings com o "estado" de todos os clientes da
@@ -184,7 +184,7 @@ public class StreamsLucasSantos {
 		boolean ePrimo = isPrimo(num);
 		System.out.println("O numero " + num + " e primo? --> " + ePrimo);
 
-		System.out.println();
+		System.out.println("====================================");
 
 		// * 16.
 		// * @param number
