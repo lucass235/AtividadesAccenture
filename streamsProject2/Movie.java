@@ -2,11 +2,13 @@ public class Movie {
     private String nome;
     private int duracao;
     private int anoLancamento;
+    private String autor;
 
-    public Filme(String nome, int duracao, int anoLancamento) {
+    public Movie(String nome, int duracao, int anoLancamento, String autor) {
         this.nome = nome;
         this.duracao = duracao;
         this.anoLancamento = anoLancamento;
+        this.autor = autor;
     }
 
     public String getNome() {
@@ -32,5 +34,15 @@ public class Movie {
     public void setAnoLancamento(int anoLancamento) {
         this.anoLancamento = anoLancamento;
     }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    
 
 }

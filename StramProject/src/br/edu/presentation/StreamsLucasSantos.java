@@ -194,14 +194,16 @@ public class StreamsLucasSantos {
 	}
 
 	public static void imprimirNomesClientes() {
-		clientes.stream().map(cliente -> cliente.getName() + " - " + cliente.getEmail()).distinct()
+		clientes.stream()
+				.map(cliente -> cliente.getName() + " - " + cliente.getEmail()).distinct()
 				.forEach(System.out::println);
 	}
 
 	public static void imprimirMediaSaldos() {
-		clientes.stream().forEach(cliente -> {
+		clientes.stream()
+				.forEach(cliente -> {
 			double media = contas.stream().filter(conta -> conta.getClient().getName().equals(cliente.getName()))
-					.mapToDouble(conta -> conta.getBalance()).average().getAsDouble();
+				.mapToDouble(conta -> conta.getBalance()).average().getAsDouble();
 
 			System.out.println(cliente.getName() + " - " + media);
 		});
