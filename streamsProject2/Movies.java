@@ -1,7 +1,10 @@
 import java.lang.StackWalker.Option;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.OptionalInt;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,21 +48,22 @@ public class Movies {
     }
 
     public void filmeLongoECurto() {
-        OptionalInt  maior = movies.stream()
-                            .mapToInt(val -> val.getDuracao())
-                            .max();
-        OptionalInt  menor = movies.stream()
-                            .mapToInt(val -> val.getDuracao())
-                            .min();
+        OptionalInt maior = movies.stream().mapToInt(val -> val.getDuracao()).max();
+        OptionalInt menor = movies.stream().mapToInt(val -> val.getDuracao()).min();
 
+        Map<String, List<Movie>> filmeMaior = movies.stream().filter(filme -> filme.getDuracao() == maior.getAsInt())
+                .collect(Collectors.groupingBy(filme -> filme.getNome()));
 
-        Movie filmeMaior = movies.stream()
-                                    .map(filme -> filme.getDuracao().equals(maior.getAsInt()))
-                                    .collect(Collectors.joining(filme);
+        Map<String, List<Movie>> filmeMenor = movies.stream().filter(filme -> filme.getDuracao() == menor.getAsInt())
+                .collect(Collectors.groupingBy(filme -> filme.getNome()));
+
+        System.out.println("Filme longo: " + filmeMaior);
+        System.out.println("Filme menor: " + filmeMenor);
 
     }
 
     public void filmesCronologica() {
-
+        movies.stream().sorted(Comparator.comparingInt(Movie::getAnoLancamento)).collect(Collectors.toList())
+                .forEach(System.out::println);
     }
 }

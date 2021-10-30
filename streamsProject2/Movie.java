@@ -15,6 +15,11 @@ public class Movie {
         return nome;
     }
 
+    @Override
+    public String toString() {
+        return " [anoLancamento= " + anoLancamento + " nome= " + nome + "] ";
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -42,7 +47,5 @@ public class Movie {
     public void setAutor(String autor) {
         this.autor = autor;
     }
-
-    
 
 }

@@ -22,7 +22,7 @@ public class principal {
         System.out.println(filmesDuracao100);
 
         filmes.filmeLongoECurto();
-        
+
         filmes.filmesCronologica();
 
     }
