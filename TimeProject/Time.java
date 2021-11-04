@@ -32,4 +32,20 @@ public class Time {
 
     }
 
+    public List<Jogador> getPlantel() {
+        return plantel;
+    }
+
+    public void setPlantel(List<Jogador> plantel) {
+        this.plantel = plantel;
+    }
+
+    public Jogador[] getRelacionados() {
+        return relacionados;
+    }
+
+    public void setRelacionados(Jogador[] relacionados) {
+        this.relacionados = relacionados;
+    }
+
 }
