@@ -3,17 +3,17 @@
         "streamsProject2",
         "pesoProject",
         "XadrezProject",
-        "TimeProject",
         "ShirtProject",
         "RetanguloProject",
         "OrcamentoProject",
-        "ExceptionProject",
+        "JogadorProject",
+        "FuncionarioProject",
         "EstadioProject",
         "DespesasProject",
         "ContaProject",
         "CirculoProject",
         "CarroProject",
         "AnimaisProject",
-        "JogadorProject"
+        "TimeProject"
     ]
 }

@@ -25,22 +25,27 @@ public class Funcionario {
     }
 
     public double calcularImposto() {
-        return 0;
+        double imposto  ;
+        imposto = this.salario * 0.11;
+        if (this.salario > 2.500) {
+            imposto += this.salario * 0.175;
+        }
+        return imposto;
     }
 
     public double calcularGanhoLiquidoMensal() {
-        double valorLiquido = this.salario;
-        valorLiquido *= 0.89;
+        double ivalorLiquido = this.salario;
+        ivalorLiquido *= 0.89;
         if (this.salario > 2.500) {
-            valorLiquido += this.salario * 0.825;
+            ivalorLiquido += this.salario * 0.825;
         }
 
-        return valorLiquido;
+        return ivalorLiquido;
     }
 
     public double calcularGanhoLiquidoAnual() {
-        double valorLiquido = this.calcularGanhoLiquidoMensal();
-        return valorLiquido * 12;
+        double ivalorLiquido = this.calcularGanhoLiquidoMensal();
+        return ivalorLiquido * 12;
     }
 
     public double getSalario() {

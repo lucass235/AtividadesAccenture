@@ -5,8 +5,8 @@ import java.text.*;
 
 public class MainTime {
     public static void main(String[] args) throws ParseException {
-        List jogadores1 = new ArrayList<Jogador>();
-        List jogadores2 = new ArrayList<Jogador>();
+        List<Jogador> jogadores1 = new ArrayList<Jogador>();
+        List<Jogador> jogadores2 = new ArrayList<Jogador>();
         Time time1;
         Time time2;
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyy");
@@ -59,7 +59,6 @@ public class MainTime {
         data = date.parse("07/02/1989");
         Jogador jogador23 = new Jogador(11, "Rhaylene", "BB", data, 07, "Atacante", 10, 0, false);
 
-
         jogadores1.add(jogador1);
         jogadores1.add(jogador2);
         jogadores1.add(jogador3);
@@ -85,7 +84,7 @@ public class MainTime {
         jogadores1.add(jogador23);
 
         data = date.parse("15/09/1968");
-        time1 = new Time("Los porocas", "Poroca", jogadores1, null, data);
+        time1 = new Time("Los porocas", "Poroca", jogadores1, data);
 
         data = date.parse("15/12/1999");
         Jogador jogador1a = new Jogador(1, "Lucas", "Luquinhas", data, 00, "Goleiro", 5, 0, false);
@@ -159,23 +158,21 @@ public class MainTime {
         jogadores2.add(jogador22a);
         jogadores2.add(jogador23a);
 
-
         data = date.parse("12/11/1955");
-        time2 = new Time("Os matador", "Mortais", jogadores2, null, data);
+        time2 = new Time("Os matador", "Mortais", jogadores2, data);
 
-        List relacionados1 = time1.relacionarJogadores();
+        Jogador[] relacionados1 = time1.relacionarJogadores();
 
-        List relacionados2 = time2.relacionarJogadores();
+        Jogador[] relacionados2 = time2.relacionarJogadores();
 
-        for (int i = 0; i < relacionados1.size(); i++) {
-            System.out.println(relacionados1.get(i));
+        for (int i = 0; i < relacionados1.length; i++) {
+            System.out.println(relacionados1[i]);
         }
-            System.out.println();
+        System.out.println();
 
-        for (int i = 0; i < relacionados2.size(); i++) {
-            System.out.println(relacionados2.get(i));
+        for (int i = 0; i < relacionados2.length; i++) {
+            System.out.println(relacionados2[i]);
         }
-        
 
     }
 }
