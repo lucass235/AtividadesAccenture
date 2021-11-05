@@ -1,19 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "streamsProject2",
-        "pesoProject",
-        "XadrezProject",
-        "ShirtProject",
-        "RetanguloProject",
-        "OrcamentoProject",
-        "JogadorProject",
-        "FuncionarioProject",
-        "EstadioProject",
-        "DespesasProject",
-        "ContaProject",
-        "CirculoProject",
-        "CarroProject",
-        "AnimaisProject",
-        "TimeProject"
+        "StramProject/demo/src/main/java/com/example/demo",
+        "ProjetosSpring/demo/src/main/java/com/example/demo",
+        "ProjetosSpring/student/src/main/java/acc/example/student"
     ]
 }
