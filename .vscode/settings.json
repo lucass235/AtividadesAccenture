@@ -1,7 +1,8 @@
 {
     "java.project.sourcePaths": [
         "StramProject/demo/src/main/java/com/example/demo",
+        "ProjetosSpring/student/src/main/java/acc/example/student",
         "ProjetosSpring/demo/src/main/java/com/example/demo",
-        "ProjetosSpring/student/src/main/java/acc/example/student"
+        "ProjetosSpring/student/src/main/java/acc/br/student"
     ]
 }

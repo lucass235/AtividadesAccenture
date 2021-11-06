@@ -1,4 +1,4 @@
-package acc.example.student;
+package acc.br.student;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
