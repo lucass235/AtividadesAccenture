@@ -1,11 +1,11 @@
-package acc.br.student.Service;
+package acc.br.student.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acc.br.student.Model.Student;
-import acc.br.student.Repository.StudentRepository;
+import acc.br.student.model.Student;
+import acc.br.student.repository.StudentRepository;
 //defining the business logic
 @Service
 public class StudentService 

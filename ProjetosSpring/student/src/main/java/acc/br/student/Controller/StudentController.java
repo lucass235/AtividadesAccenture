@@ -1,4 +1,4 @@
-package acc.br.student.Controller;
+package acc.br.student.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import acc.br.student.Model.Student;
-import acc.br.student.Service.StudentService;
+import acc.br.student.model.Student;
+import acc.br.student.service.StudentService;
 //creating RestController
 @RestController
 public class StudentController 

@@ -1,4 +1,4 @@
-package acc.br.student.Model;
+package acc.br.student.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
